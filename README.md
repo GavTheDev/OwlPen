@@ -9,8 +9,5 @@
 
 ## Subdomains
 
-- [Uptime Kuma](https://uptime.owlpentest.com/)
-- [OpenVPN](https://vpn.owlpentest.com/)
-- [GavMC](https://mc.owlpentest.com/)
-- [Private MC Server](https://java.owlpentest.com/)
+- [Private MC Server](https://server.owlpentest.com/)
 - [OwlChat](https://chat.owlpentest.com/)
