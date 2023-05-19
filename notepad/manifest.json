@@ -5,8 +5,8 @@
   "start_url": "https://owlpentest.com/notepad/",
   "scope": "https://owlpentest.com/notepad/",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
+  "background_color": "#686868",
+  "theme_color": "#686868",
   "icons": [
     {
       "src": "https://owlpentest.com/notepad/192.png",
