@@ -1,5 +1,5 @@
 const CACHE_NAME = 'notepad-cache-v1';
-const urlsToCache = ['./', './games.json', './js/main.js', './css/main.css', './css/fontawesome.css'];
+const urlsToCache = ['./', '/games/games.json', './js/main.js', '/games/css/main.css', '/games/css/fontawesome.css'];
 self.addEventListener('install', (event) => {
     event.waitUntil(caches.open(CACHE_NAME).then((cache) => {
         console.log('Opened cache');
@@ -29,7 +29,7 @@ self.addEventListener('fetch', (event) => {
     }))
 });
 self.addEventListener('activate', (event) => {
-    const cacheWhitelist = ['notepad-cache-v1'];
+    const cacheWhitelist = ['game-cache-v1'];
     event.waitUntil(caches.keys().then((cacheNames) => {
         return Promise.all(cacheNames.map((cacheName) => {
             if (cacheWhitelist.indexOf(cacheName) === -1) {
