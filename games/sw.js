@@ -1,5 +1,5 @@
 const CACHE_NAME = 'notepad-cache-v1';
-const urlsToCache = ['./', '/games/games.json', './js/main.js', '/games/css/main.css', '/games/css/fontawesome.css'];
+const urlsToCache = ['./', './js/main.js', '/games/css/main.css', '/games/css/fontawesome.css'];
 self.addEventListener('install', (event) => {
     event.waitUntil(caches.open(CACHE_NAME).then((cache) => {
         console.log('Opened cache');
