@@ -208,3 +208,12 @@ document
     .addEventListener('click', () => {
         popup.style.display = 'none'
     });
+if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator
+                    .serviceWorker
+                    .register("/games/sw.js")
+                    .then(e => console.log("ServiceWorker registered:", e))
+                    .catch(e => console.error("ServiceWorker registration failed:", e))
+            })
+        }
