@@ -1,4 +1,4 @@
-fetch('./games.json').then(response=>response.json()).then(games=>{games.forEach(game=>{const gameElement=document.createElement("div");gameElement.classList.add("game");gameElement.innerHTML=`
+function shuffleArray(array){for(let i=array.length-1;i>0;i-=1){let j=Math.floor(Math.random()*(i+1));[array[i],array[j]]=[array[j],array[i]]}}fetch('./games.json').then(response=>response.json()).then(games=>{shuffleArray(games);games.forEach(game=>{const gameElement=document.createElement("div");gameElement.classList.add("game");gameElement.innerHTML=`
         <div class="img" loading="lazy" data-src="${game[2]}" onclick="play('${game[0]}', '${game[3]}')">
           <div class="cover"></div>
         </div>
