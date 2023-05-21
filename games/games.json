@@ -6,5 +6,6 @@
     ["Wordle", "Guess the word within six tries.", "./images/wordle.png", "./game/wordle/index.html"],
     ["Chrome Dino", "Avoid the obstacles and achieve the highest score.", "./images/chromedino.png", "./game/chromedino/index.html"],
     ["Dominoes", "A classic tile-based board game.", "./images/dominoes.png", "./game/dominoes/index.html"],
-    ["JS-DOS", "A collection of retro DOS games.", "./images/msdos.png", "https://dos.zone/"]
+    ["JS-DOS", "A collection of retro DOS games.", "./images/msdos.png", "https://dos.zone/"],
+    ["Super Mario 64", "An older Mario game from the Nintendo 64.", "./images/sm64.png", "./game/sm64/index.html"]
 ]
