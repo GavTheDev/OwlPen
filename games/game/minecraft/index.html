@@ -24,10 +24,14 @@
       <meta name="description" content="Minecraft v1.5.2 inside your browser.">
       <script type="text/javascript" src="classes.js"></script>
       <script type="text/javascript">
-         window.addEventListener("load")
-         window.minecraftOpts = ["game_frame","assets.epk"];
+         window.addEventListener("load", function(){
+    window.minecraftOpts = [
+    "game_frame","assets.epk",
+    btoa(atob("CgAACQAHc2VydmVycwoAAAABCAAKZm9yY2VkTU9URABtb3RkaGVyZQEAC2hpZGVBZGRyZXNzAQgAAmlwAGlwaGVyZQgABG5hbWUAbmFtZWhlcmUAAA==").replace("motdhere",String.fromCharCode(`Your Minecraft Server`.length)+`Your Minecraft Server`).replace("namehere",String.fromCharCode(`GavMC`.length)+`GavMC`))
+    ];
+    main();
+});
       </script>
    </head>
-   <body style="margin:0px;width:100vw;height:100vh;" id="game_frame">
-   </body>
+   <body style="margin:0px;width:100vw;height:100vh;" id="game_frame"></body>
 </html>
