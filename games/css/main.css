@@ -18,9 +18,6 @@ body {
     height: 25vh;
     margin-top: -4vw;
 }
-.spacer span {
-    color: #2c7ffc;
-}
 #start-button {
     position: absolute;
     top: 62.5%;
