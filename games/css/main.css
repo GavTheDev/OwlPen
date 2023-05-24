@@ -215,10 +215,9 @@ body {
     color: #2c7ffc;
 }
 #navigation font {
-    font-size: 1.7vw;
-    font-weight: 500;
+    font-size: 1.5vw;
+    font-weight: 600;
     color: #fff;
-    z-index: 1;
 }
 ::-webkit-scrollbar {
     background-color: transparent;
