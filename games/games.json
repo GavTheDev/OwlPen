@@ -4,7 +4,7 @@
     ["Bitlife", "Take control of a stranger's life from beginning to end.", "./images/bitlife.png", "./game/bitlife/index.html", "Candywriter"],
     ["Wordle", "Guess the word within six tries.", "./images/wordle.png", "./game/wordle/index.html", "NYTimes"],
     ["Chrome Dino", "Avoid the obstacles and achieve the highest score.", "./images/chromedino.png", "./game/chromedino/index.html", "Google"],
-    ["Dominoes", "A classic tile-based board game.", "./images/dominoes.png", "./game/dominoes/index.html", "PlayDrift"],
+    ["Dominoes", "A classic tile-based board game.", "./images/dominoes.png", "https://dominoes.playdrift.com/", "PlayDrift"],
     ["Super Mario 64", "An older 3D Mario game from the Nintendo 64 console.", "./images/sm64.png", "./game/sm64/index.html", "Nintendo"],
     ["PolyTrack", "A really well built web-based racing game.", "./images/polytrack.png", "https://www.kodub.com/apps/polytrack", "Kodub"]
 ]
