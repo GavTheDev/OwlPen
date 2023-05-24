@@ -15,8 +15,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 25vh;
-    margin-top: -4vw;
+    height: 98vh;
+    width: 50%;
+    margin-left: 2vw;
+    margin-top: -7vw;
 }
 .main h1 {
     font-size:7vw;
