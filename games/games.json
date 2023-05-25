@@ -7,5 +7,6 @@
     ["Dominoes", "A classic tile-based board game.", "./images/dominoes.png", "https://dominoes.playdrift.com/", "PlayDrift"],
     ["Super Mario 64", "An older 3D Mario game from the Nintendo 64 console.", "./images/sm64.png", "./game/sm64/index.html", "Nintendo"],
     ["PolyTrack", "A really well built web-based racing game.", "./images/polytrack.png", "https://www.kodub.com/apps/polytrack", "Kodub"],
-    ["A Dark Room", "A minimalist text adventure.", "./images/adarkroom.png", "https://adarkroom.doublespeakgames.com/", "Doublespeak Games"]
+    ["A Dark Room", "A minimalist text adventure.", "./images/adarkroom.png", "https://adarkroom.doublespeakgames.com/", "Doublespeak Games"],
+    ["Cookie Clicker", "A grow your cookie empire.", "./images/cookieclicker.png", "https://orteil.dashnet.org/cookieclicker/", "Orteil"]
 ]
