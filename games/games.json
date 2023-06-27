@@ -9,5 +9,6 @@
     ["PolyTrack", "A really well built web-based racing game.", "./images/polytrack.png", "https://www.kodub.com/apps/polytrack", "Kodub"],
     ["A Dark Room", "A minimalist text adventure.", "./images/adarkroom.png", "./game/adarkroom/index.html", "Doublespeak Games"],
     ["Cookie Clicker", "A grow your cookie empire.", "./images/cookieclicker.png", "./game/cookieclicker/index.html", "Orteil"],
-    ["WebRetro", "Bring your own ROMS.", "./images/emulator.png", "./game/emulator/index.html", "Libretro"]
+    ["WebRetro", "Bring your own ROMS.", "./images/emulator.png", "./game/emulator/index.html", "Libretro"],
+    ["3D.City", "A 3D city builder.", "./images/3dcity.png", "./game/3dcity/index.html", "lo-th"]
 ]
