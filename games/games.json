@@ -6,9 +6,10 @@
     ["Chrome Dino", "Avoid the obstacles and achieve the highest score.", "./images/chromedino.png", "./game/chromedino/index.html", "Google"],
     ["Dominoes", "A classic tile-based board game.", "./images/dominoes.png", "./game/dominoes/index.html", "PlayDrift"],
     ["Super Mario 64", "An older 3D Mario game from the Nintendo 64 console.", "./images/sm64.png", "./game/sm64/index.html", "Nintendo"],
-    ["PolyTrack", "A really well built web-based racing game.", "./images/polytrack.png", "https://www.kodub.com/apps/polytrack", "Kodub"],
+    ["PolyTrack", "A really well-built web-based racing game.", "./images/polytrack.png", "https://www.kodub.com/apps/polytrack", "Kodub"],
     ["A Dark Room", "A minimalist text adventure.", "./images/adarkroom.png", "./game/adarkroom/index.html", "Doublespeak Games"],
-    ["Cookie Clicker", "A grow your cookie empire.", "./images/cookieclicker.png", "./game/cookieclicker/index.html", "Orteil"],
+    ["Cookie Clicker", "Grow your cookie empire.", "./images/cookieclicker.png", "./game/cookieclicker/index.html", "Orteil"],
     ["WebRetro", "Bring your own ROMS.", "./images/emulator.png", "./game/emulator/index.html", "Libretro"],
-    ["3D.City", "A 3D city builder.", "./images/3dcity.png", "./game/3dcity/index.html", "lo-th"]
+    ["3D.City", "A 3D city builder.", "./images/3dcity.png", "./game/3dcity/index.html", "lo-th"],
+    ["Slope", "Avoid obstacles and roll.", "./images/slope.png", "./game/slope/index.html", "RobKaySF"]
 ]
