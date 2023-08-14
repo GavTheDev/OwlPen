@@ -71,14 +71,18 @@
     <script src="sw.js"></script>
     <script type="text/javascript">
     if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator
-                    .serviceWorker
-                    .register("sw.js")
-                    .then(e => console.log("ServiceWorker registered:", e))
-                    .catch(e => console.error("ServiceWorker registration failed:", e))
-            })
-        }    
+    window.addEventListener("load", () => {
+        navigator
+            .serviceWorker
+            .register("sw.js")
+            .then(e => console.log("ServiceWorker registered:", e))
+            .catch(e => console.error("ServiceWorker registration failed:", e));
+        });
+    }
+
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigator.userAgent)) {
+    window.location.href = "https://owlpentest.com/mobile-error";
+    }
     </script>
 </body>
 </html>
