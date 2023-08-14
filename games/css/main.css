@@ -242,27 +242,62 @@ body {
 }
 .controls {
     position: fixed;
-    top: 1vw;
-    right: 1vw;
+    top:1vw;
+    left:1vw;
     width: max-content;
     z-index: 100;
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 0.5vw;
+    background-color: rgba(110, 110, 110, 0.897);
+    border-radius: .5vw .5vw 0 0;
+    box-shadow: 0px 0px 10px #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.controls .drag-box {
+    position: absolute;
+    bottom: -2vw;
+    height: 2vw;
+    width: 100%;
+    background-color: rgba(110, 110, 110, 0.897);
+    border-radius: 0 0 .5vw .5vw;
+    cursor: grab;
+    text-align: center;
+}
+.controls .drag-box:hover {
+    cursor: grab;
 }
 .controls i {
     color: rgba(0, 0, 0, 0.829);
     font-size: 3vw;
-    padding: 0.5vw;
-    transition: 0.2s ease-in-out;
+    padding: .5vw;
+    transition: .2s ease-in-out;
+    text-shadow: 0px 0px 10px #818181;
 }
+
 .controls i:hover {
     color: rgba(0, 0, 0, 0.507);
     font-size: 3vw;
-    padding: 0.5vw;
+    padding: .5vw;
     cursor: pointer;
 }
 .controls i.fa-solid.fa-star:hover {
     color: #fcea4cd7;
+}
+.controls span h3 {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    transition: opacity .2s ease;
+    opacity: 0;
+    background-color: #292929ee;
+    padding: .2vw .5vw;
+    margin-top: -.2vw;
+    border-radius: .5vw;
+    box-shadow: 0 0 5px #181818;
+    font-size: 1vw;
+    cursor: pointer;
+    width: max-content;
+    text-align: center;
 }
 #error {
     text-align: center;
