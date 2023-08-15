@@ -21,7 +21,7 @@ fetch('./games.json')
       <h1>${game[0]}</h1>
       <p>${game[1]}</p>
       <button class="install" onclick="play('${game[0]}','${game[3]}')">Play</button>
-      <span>(Credit: ${game[4]})</span>
+      <span>${game[4]}</span>
       </div>
   `;
           document
