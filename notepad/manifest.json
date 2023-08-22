@@ -6,7 +6,7 @@
   "scope": "https://www.owlpentest.com/notepad/",
   "display": "standalone",
   "background_color": "#686868",
-  "theme_color": "#686868",
+  "theme_color": "#3254ff",
   "icons": [
     {
       "src": "https://owlpentest.com/notepad/192.png",
