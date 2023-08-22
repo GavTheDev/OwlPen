@@ -246,8 +246,8 @@ function shuffleArray(array) {
   }
 }
 
-// Fetch and process game list data from '/lib/games.json'.
-fetch('/lib/games.json')
+// Fetch and process game list data from './lib/games.json'.
+fetch('./lib/games.json')
   .then(response => response.json())
   .then(games => {
     shuffleArray(games); // Shuffle game order function.
