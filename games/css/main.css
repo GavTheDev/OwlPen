@@ -12,21 +12,11 @@ html {
 }
 
 body {
-    animation: fadeIn 2s 1s forwards;
     font-family: 'Montserrat', sans-serif;
     background-color: #2e2e2e;
     color: #fff;
     overflow-x: hidden;
     animation: fadeIn 2s 1s forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
 }
 
 .top {
