@@ -1193,7 +1193,7 @@ a {
     left: 0;
     height: 100%;
     width: 100%;
-    background-image: url('./images/checkerboard.png');
+    background-image: url('https://www.owlpentest.com/games/images/checkerboard.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-size: 400%;
