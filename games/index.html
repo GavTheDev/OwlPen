@@ -42,16 +42,86 @@
             </button>
         </div>
         <div class="icons">
-            <div class="icon">
-                <i class="fa-regular fa-down-left-and-up-right-to-center" onclick="gamesPerspective()" aria-label="games perspective button" role="button"></i>
+            <div class="icon" onclick="toggleIcon()">
+                <i id="gamePerspectiveIcon" class="fa-regular fa-down-left-and-up-right-to-center" aria-label="games perspective button" role="button"></i>
+            </div>
+            <div class="icon" onclick="settings()">
+                <i class="fa-solid fa-gear" aria-label="open settings button" role="button" id="settings-button"></i>
             </div>
         </div>
     </div>
     <div class="main" id="main"></div>
+    <div id="settings" class="">
+        <div class="taskbar">
+            <div class="option active" data-page="general">
+                <img src="/images/cog.png" alt="" class="task-icon">
+                <h3>General</h3>
+            </div>
+            <div class="option" data-page="bugs-and-suggestions">
+                <img src="/images/lock.png" alt="" class="task-icon">
+                <h3>Bugs & Suggestions</h3>
+            </div>
+        </div>
+        <div id="pages">
+            <div id="general" class="page">
+                <div class="tab-cloak">
+                    <h2>Tab Cloak</h2>
+                    <p>Pick or remove a tab cloak below!</p>
+                    <hr>
+                    <div class="icons">
+                        <div id="owlgames-set">
+                            <img src="/images/favicon.png" alt="icon" draggable="false" onclick="cloak('./images/favicon.png', 'OwlGames', 'owlgames')">
+                            <i class="fa-solid fa-xmark-large"></i>
+                        </div>
+                        <div id="classroom">
+                            <img src="/images/classroom.png" alt="icon" draggable="false" onclick="cloak('/images/classroom.png', 'Classes', 'classroom')">
+                            <i class="fa-solid fa-xmark-large"></i>
+                        </div>
+                        <div id="drive">
+                            <img src="/images/drive.png" alt="icon" draggable="false" onclick="cloak('/images/drive.png', 'My Drive - Google Drive', 'drive')">
+                            <i class="fa-solid fa-xmark-large"></i>
+                        </div>
+                        <div id="google" class="active">
+                            <img src="/images/google.png" alt="icon" draggable="false" onclick="cloak('/images/google.png', 'Google', 'google')">
+                            <i class="fa-solid fa-xmark-large"></i>
+                        </div>
+                        <div id="gmail">
+                            <img src="/images/gmail.png" alt="icon" draggable="false" onclick="cloak('/images/gmail.png', 'Inbox (6) - Gmail', 'gmail')">
+                            <i class="fa-solid fa-xmark-large"></i>
+                        </div>
+                        <div id="clever">
+                            <i class="fa-solid fa-xmark-large"></i>
+                            <img src="/images/clever.png" alt="icon" draggable="false" onclick="cloak('/images/clever.png', 'Clever | Portal', 'clever')">
+                        </div>
+                    </div>                    
+                </div>
+                <div class="safety-key">
+                    <div class="key">
+                        <h2>]</h2>
+                    </div>
+                    <h2 class="record" id="record"><i class="fa-solid fa-circle-microphone-lines"></i>Record Keystroke</h2>
+                    <h3 id="save">Saved!</h3>
+                    <p>Above is a <span>panic key</span>, a key when you press when a Teacher is coming so you can easily go to a school work site.</p>
+                    <div class="site-options">
+                        <div class="site-option active" id="gc">
+                            <img src="/images/classroom.png" alt="classroom">
+                            <h2>Google Classroom</h2>
+                        </div>
+                        <div class="site-option" id="c">
+                            <img src="/images/canvas.png" alt="canvas">
+                            <h2>Canvas</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="bugs-and-suggestions" class="page" style="display: block;">
+                <h2>Coming soon.</h2>                  
+            </div>
+        </div>
+    </div>
     <div id="game-frame">
         <div class="controls">
-            <div class="drag-box" id="drag-box" style="cursor: grab; background-color: rgba(29, 29, 29, 0.898);">
-            </div>
+            <div class="drag-box" id="drag-box" style="cursor: grab; background-color: rgba(29, 29, 29, 0.898);"></div>
             <i class="fa-solid fa-circle-xmark" onclick="play()" aria-label="play"></i>
         </div>
         <iframe src="" id="iframe"></iframe>
@@ -75,8 +145,6 @@
         navigator
             .serviceWorker
             .register("sw.js")
-            .then(e => console.log("ServiceWorker registered:", e))
-            .catch(e => console.error("ServiceWorker registration failed:", e));
         });
     }
 
