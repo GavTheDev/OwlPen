@@ -1,12 +1,11 @@
 {
   "name": "Notepad",
-  "short_name": "Notepad",
   "description": "A simple notepad web app",
   "start_url": "https://www.owlpentest.com/notepad/",
   "scope": "https://www.owlpentest.com/notepad/",
   "display": "standalone",
   "background_color": "#686868",
-  "theme_color": "#3254ff",
+  "theme_color": "#686868",
   "icons": [
     {
       "src": "https://owlpentest.com/notepad/192.png",
