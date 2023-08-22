@@ -494,5 +494,5 @@ var savedTab = localStorage.getItem('activeTab');
 if (savedIcon && savedTitle && savedTab) {
   cloak(savedIcon, savedTitle, savedTab);
 } else {
-  cloak('/images/favicon.png', 'OwlGames', 'owlgames');
+  cloak('https://www.owlpentest.com/games/images/favicon.png', 'OwlGames', 'owlgames');
 }
