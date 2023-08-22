@@ -482,8 +482,6 @@ function cloak(icon, title, id) {
   localStorage.setItem('activeTab', id);
 
   document.querySelectorAll('#settings #pages #general .icons div').forEach(div => div.classList.remove('active'));
-
-  document.querySelector(`#${id}`).classList.add('active');
 }
 
 var savedIcon = localStorage.getItem('icon');
