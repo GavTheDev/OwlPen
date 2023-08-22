@@ -34,6 +34,19 @@ window.onload = function() {
   }
 };
 
+// Randomized messages on page load.
+document.addEventListener("DOMContentLoaded", function () {
+  fetch('./lib/messages.json')
+      .then(response => response.json())
+      .then(data => {
+          const messages = data.messages;
+          const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+          document
+              .getElementById('message')
+              .textContent = randomMessage
+      })
+});
+
 // Close the settings panel whenever there's an outside action.
 function handleOutsideClick(event) {
   if (event.target === settingsDiv) return;
