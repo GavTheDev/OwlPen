@@ -1,25 +1,27 @@
 <!--
-        .--.       .--.
-    _  `    \     /    `  _
-     `\.===. \.^./ .===./`
-            \/`"`\/
-         ,  |     |  ,
-        / `\|;-.-'|/` \
-       /    |::\  |    \
-        |   |::::\|   | 
-        |   |::::;|   |
-        |   \:::://   |
-        |    `.://'   |
-       .'             `.
-    _,'                 `,_
+       ,_     _,
+         '._.'
+    '-,   (_)   ,-'
+      '._ .:. _.'
+       _ '|Y|' _
+     ,` `>\ /<` `,
+    ` ,-`  I  `-, `
+      |   /=\   |
+    ,-'   |=|   '-,
+          )-(
+          \_/
 -->
 
 <html lang="en" data-lt-installed="true">
-<head>
+
+<head>   
+    <!-- Title & Tab Info -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OwlGames</title>
+        
+    <!-- Meta Tags -->
     <meta property="og:title" content="OwlGames">
     <meta name="description" content="A simple directory for games.">
     <meta name="og:description" content="A simple directory for games.">
@@ -32,9 +34,12 @@
     <link rel="icon" href="./images/favicon.png">
     <link rel="manifest" href="./manifest.json">
 </head>
+
 <body>
     <div id="navigation">
-        <h1>Owl<span>Games</span> <font id="message">Free games for everyone.</font> </h1>
+        <h1>Owl<span>Games</span>
+            <font id="message">Free games for everyone.</font>
+        </h1>
         <div class="search">
             <input type="text" placeholder="Search" id="search" autocomplete="off" oninput="search()" aria-label="search input">
             <button onclick="search()" aria-label="search button">
@@ -89,7 +94,7 @@
                             <i class="fa-solid fa-xmark-large"></i>
                             <img src="./images/clever.png" alt="icon" draggable="false" onclick="cloak('./images/clever.png', 'Clever | Portal', 'clever')">
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="safety-key">
                     <div class="key">
@@ -111,7 +116,7 @@
                 </div>
             </div>
             <div id="bugs-and-suggestions" class="page" style="display: block;">
-                <h2>Coming soon.</h2>                  
+                <h2>Coming soon.</h2>
             </div>
         </div>
     </div>
@@ -133,16 +138,19 @@
             <p id="display"></p>
         </main>
     </footer>
+
+    <!-- Scripts -->
     <script src="./js/main.js"></script>
     <script src="sw.js"></script>
     <script type="text/javascript">
-    if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-        navigator
-            .serviceWorker
-            .register("sw.js")
-        });
-    }
+        if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator
+                .serviceWorker
+                .register("sw.js")
+            });
+        }
     </script>
 </body>
+
 </html>
