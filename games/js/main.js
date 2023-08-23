@@ -266,9 +266,8 @@ function shuffleArray(array) {
 fetch('./lib/games.json')
     .then(response => response.json())
     .then(games => {
-        shuffleArray(games); // Shuffle game order function.
+        shuffleArray(games);
         games.forEach(game => {
-            // Create an HTML element for each game.
             const gameElement = document.createElement("div");
             gameElement.classList.add("game");
             gameElement.innerHTML = `
@@ -283,17 +282,15 @@ fetch('./lib/games.json')
         </div>
       `;
             document.getElementById("games").appendChild(gameElement);
-            observeImage(gameElement.querySelector(".img")); // Observe images for lazy loading.
+            observeImage(gameElement.querySelector(".img"));
         });
         
-        // Now, fetch apps.json
         return fetch('./lib/apps.json');
     })
     .then(response => response.json())
     .then(apps => {
-        // Process apps similar to how you processed games
+        shuffleArray(apps);
         apps.forEach(app => {
-            // Assuming the app array structure is similar to games
             const appElement = document.createElement("div");
             appElement.classList.add("app");
             appElement.innerHTML = `
