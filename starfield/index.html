@@ -1,14 +1,43 @@
 <html lang=en>
-<meta charset=UTF-8>
-<meta content="width=device-width,initial-scale=1" name=viewport>
-<link href=https://starfield.owlpentest.com/favicon.svg rel=icon>
-<link rel="manifest" href="manifest.json" />
-<title>Starfield</title>
-<style>
-    body,html{margin:0;padding:0;height:100%;width:100%;overflow:hidden}iframe{border:none;width:100%;height:100%;display:block}
-</style><iframe src=https://starfield.owlpentest.com/></iframe>
-<script>
-if ("serviceWorker" in navigator) {
-navigator.serviceWorker.register("sw.js");
-}
-</script>
+
+<head>
+    <meta charset=UTF-8>
+    <meta content="width=device-width,initial-scale=1" name=viewport>
+    <link href=https://starfield.owlpentest.com/favicon.svg rel=icon>
+    <link rel="manifest" href="manifest.json" />
+    <title>Starfield</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+            display: block
+        }
+    </style>
+</head>
+
+<body>
+    <iframe src=https://starfield.owlpentest.com /></iframe>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("sw.js");
+        }
+    </script>
+    <script>
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigator.userAgent)) {
+            window.location.href = "https://www.owlpentest.com/mobile-error";
+        }
+        };
+    </script>
+</body>
+
+</html>
