@@ -300,7 +300,7 @@ fetch('./lib/games.json')
         <div class="img" loading="lazy" data-src="${app[2]}" onclick="play('${app[0]}', '${app[3]}')">
           <div class="cover"></div>
         </div>
-        <div id="game-content" class="game-content">
+        <div id="app-content" class="app-content">
           <h1>${app[0]}</h1>
           <p>${app[1]}</p>
           <button class="install" onclick="play('${app[0]}','${app[3]}')">Play</button>
