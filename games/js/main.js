@@ -486,26 +486,41 @@ function getRandomInt(min, max) {
 
 //Cloak browser tab
 function cloak(icon, title, id) {
-  var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-  link.type = 'image/x-icon';
-  link.rel = 'shortcut icon';
+  let link = document.querySelector("link[rel*='icon']");
+  
+  if (!link) {
+    link = document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  }
+
   link.href = icon;
-  document.title= title;
-  document.getElementsByTagName('head')[0].appendChild(link);
+  document.title = title;
   
   localStorage.setItem('icon', icon);
   localStorage.setItem('title', title);
   localStorage.setItem('activeTab', id);
 
-  document.querySelectorAll('#settings #pages #general .icons div').forEach(div => div.classList.remove('active'));
+  document.querySelectorAll('#settings #pages #general .icons div').forEach(div => {
+    if (div.id === id) {
+      div.classList.add('active');
+    } else {
+      div.classList.remove('active');
+    }
+  });
 }
 
-var savedIcon = localStorage.getItem('icon');
-var savedTitle = localStorage.getItem('title');
-var savedTab = localStorage.getItem('activeTab');
+document.addEventListener("DOMContentLoaded", function() {
+  for(let i = 0; i < 2; i++) {
+    var savedIcon = localStorage.getItem('icon');
+    var savedTitle = localStorage.getItem('title');
+    var savedTab = localStorage.getItem('activeTab');
 
-if (savedIcon && savedTitle && savedTab) {
-  cloak(savedIcon, savedTitle, savedTab);
-} else {
-  cloak('https://www.owlpentest.com/games/images/favicon.png', 'OwlGames', 'owlgames');
-}
+    if (savedIcon && savedTitle && savedTab) {
+      cloak(savedIcon, savedTitle, savedTab);
+    } else {
+      cloak('https://www.owlpentest.com/games/images/favicon.png', 'OwlGames', 'owlgames');
+    }
+  }
+});
