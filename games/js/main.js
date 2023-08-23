@@ -303,7 +303,7 @@ fetch('./lib/games.json')
         <div id="app-content" class="app-content">
           <h1>${app[0]}</h1>
           <p>${app[1]}</p>
-          <button class="install" onclick="play('${app[0]}','${app[3]}')">Play</button>
+          <button class="install" onclick="play('${app[0]}','${app[3]}')">Start</button>
           <span>(Credit: ${app[4]})</span>
         </div>
       `;
@@ -316,7 +316,6 @@ fetch('./lib/games.json')
             document.getElementById('loader').style.display = 'none';
         }, 100);
         document.getElementById('games').style.display = 'grid';
-        // Assuming you also have a container for apps
         document.getElementById('apps').style.display = 'grid';
     });
 
