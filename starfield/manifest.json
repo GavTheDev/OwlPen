@@ -1,7 +1,7 @@
 {
    "name": "Starfield",
    "short_name" : "Starfield",
-   "scope": "./",
+   "scope": "https://www.owlpentest.com/starfield",
    "start_url" : "https://www.owlpentest.com/starfield",
    "prefer_related_applications": false,
    "display": "fullscreen",
@@ -10,13 +10,13 @@
    "description" : "Fast and easy unblocking.",
    "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "./favicon.svg",
       "type": "image/png",
       "sizes": "2085x2085",
       "purpose": "maskable"
     },
     {
-      "src": "/apple-touch-icon.png",
+      "src": "./apple-touch-icon.png",
       "type": "image/png",
       "sizes": "192x192"
     }
