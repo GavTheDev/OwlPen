@@ -1,9 +1,93 @@
 [
     [
-        "Test App",
-        "Test app description",
-        "./images/favicon.png",
-        "https://starfield.owlpentest.com/proxy.html?url=https://owlpentest.com/",
-        "Gavin"
+        "GeForceNOW",
+        "GeForce NOW is NVIDIA's cloud-based game streaming service.",
+        "https://www.owlpentest.com/games/images/geoforcenow.png",
+        "https://starfield.owlpentest.com/proxy.html?url=https://play.geforcenow.com/",
+        "Nvidia"
+    ],
+    [
+        "Google",
+        "Google it.",
+        "https://www.owlpentest.com/games/images/google.jpg",
+        "https://starfield.owlpentest.com/proxy.html?url=https://google.com",
+        "Alphabet"
+    ],
+    [
+        "YouTube",
+        "YouTube is a popular video sharing platform.",
+        "https://www.owlpentest.com/games/images/ytpng.png",
+        "https://starfield.owlpentest.com/proxy.html?url=https://youtube.com",
+        "Alphabet"
+    ],
+    [
+        "Spotify",
+        "Spotify is a digital music service.",
+        "https://www.owlpentest.com/games/images/spotify.png",
+        "https://starfield.owlpentest.com/proxy.html?url=https://open.spotify.com/",
+        "Daniel Ek"
+    ],
+    [
+        "Twitch",
+        "Twitch is a live streaming platform.",
+        "https://www.owlpentest.com/games/images/twitch.jpg",
+        "https://starfield.owlpentest.com/proxy.html?url=https://twitch.tv",
+        "Emmett Shear"
+    ],
+    [
+        "Discord",
+        "Discord is a communication platform.",
+        "https://www.owlpentest.com/games/images/discord.png",
+        "https://starfield.owlpentest.com/proxy.html?url=https://discord.com",
+        "Jason Citron"
+    ],
+    [
+        "Reddit",
+        "Reddit is an online community.",
+        "https://www.owlpentest.com/games/images/reddit.png",
+        "https://starfield.owlpentest.com/proxy.html?url=https://reddit.com",
+        "Steve Huffman"
+    ],
+    [
+        "Facebook",
+        "Facebook is a social networking platform.",
+        "https://www.owlpentest.com/games/images/facebook.png",
+        "https://starfield.owlpentest.com/proxy.html?url=https://facebook.com",
+        "Mark Zuckerburg"
+    ],
+    [
+        "GitHub",
+        "A web-based hosting service for coding projects.",
+        "https://www.owlpentest.com/games/images/github.png",
+        "https://starfield.owlpentest.com/proxy.html?url=https://github.com",
+        "Tom Preston-Werner"
+    ],
+    [
+        "Replit",
+        "Replit is an online coding IDE that allows you to code in your browser.",
+        "https://www.owlpentest.com/games/images/replit.jpg",
+        "https://starfield.owlpentest.com/proxy.html?url=https://replit.com",
+        "Amjad Masad, Faris Masad, & Haya Odeh"
+    ],
+    [
+        "Visual Studio Code",
+        "Visual Studio Code is a free web code editor.",
+        "https://www.owlpentest.com/games/images/vscode.jpeg",
+        "https://starfield.owlpentest.com/proxy.html?url=https://vscode.dev/",
+        "Microsoft"
+    ],
+    [
+        "WebRetro",
+        "Bring your own ROMS.",
+        "https://www.owlpentest.com/games/images/emulator.png",
+        "https://www.owlpentest.com/games/game/emulator/index.html",
+        "Libretro"
+    ],
+    [
+        "Bard",
+        "A large language model from Google AI, trained on a massive dataset of text and code.",
+        "https://www.gstatic.com/lamda/images/favicon_v1_150160cddff7f294ce30.svg",
+        "https://starfield.owlpentest.com/proxy.html?url=bard.google.com",
+        "Google"
     ]
 ]
