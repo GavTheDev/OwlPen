@@ -264,14 +264,14 @@ function shuffleArray(array) {
 
 // Fetch and process game list data from './lib/games.json'.
 fetch('./lib/games.json')
-  .then(response => response.json())
-  .then(games => {
-    shuffleArray(games); // Shuffle game order function.
-    games.forEach(game => {
-      // Create an HTML element for each game.
-      const gameElement = document.createElement("div");
-      gameElement.classList.add("game");
-      gameElement.innerHTML = `
+    .then(response => response.json())
+    .then(games => {
+        shuffleArray(games); // Shuffle game order function.
+        games.forEach(game => {
+            // Create an HTML element for each game.
+            const gameElement = document.createElement("div");
+            gameElement.classList.add("game");
+            gameElement.innerHTML = `
         <div class="img" loading="lazy" data-src="${game[2]}" onclick="play('${game[0]}', '${game[3]}')">
           <div class="cover"></div>
         </div>
@@ -282,14 +282,43 @@ fetch('./lib/games.json')
           <span>(Credit: ${game[4]})</span>
         </div>
       `;
-      document.getElementById("games").appendChild(gameElement);
-      observeImage(gameElement.querySelector(".img")); // Observe images for lazy loading.
+            document.getElementById("games").appendChild(gameElement);
+            observeImage(gameElement.querySelector(".img")); // Observe images for lazy loading.
+        });
+        
+        // Now, fetch apps.json
+        return fetch('./lib/apps.json');
+    })
+    .then(response => response.json())
+    .then(apps => {
+        // Process apps similar to how you processed games
+        apps.forEach(app => {
+            // Assuming the app array structure is similar to games
+            const appElement = document.createElement("div");
+            appElement.classList.add("app");
+            appElement.innerHTML = `
+        <div class="img" loading="lazy" data-src="${app[2]}" onclick="openApp('${app[0]}', '${app[3]}')">
+          <div class="cover"></div>
+        </div>
+        <div id="app-content" class="app-content">
+          <h1>${app[0]}</h1>
+          <p>${app[1]}</p>
+          <button class="install" onclick="openApp('${app[0]}','${app[3]}')">Open</button>
+          <span>(Credit: ${app[4]})</span>
+        </div>
+      `;
+            document.getElementById("apps").appendChild(appElement);
+            observeImage(appElement.querySelector(".img"));
+        });
+    })
+    .finally(() => {
+        setTimeout(() => {
+            document.getElementById('loader').style.display = 'none';
+        }, 100);
+        document.getElementById('games').style.display = 'grid';
+        // Assuming you also have a container for apps
+        document.getElementById('apps').style.display = 'grid';
     });
-    setTimeout(() => {
-      document.getElementById('loader').style.display = 'none';
-    }, 100);
-    document.getElementById('games').style.display = 'grid';
-  });
 
 // Function to observe images for lazy loading.
 function observeImage(imgElement) {
