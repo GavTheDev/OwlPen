@@ -153,7 +153,7 @@ a {
     transition: backdrop-filter 0.25s linear;
 }
 
-.app #game-content button {
+.app #app-content button {
     background-color: #222222;
     border: 1px solid #fff;
     border-radius: 1vw;
@@ -170,13 +170,13 @@ a {
     transition: .3s all ease;
 }
 
-.app #game-content button:hover {
+.app #app-content button:hover {
     transition: .3s all ease;
     background-color: #fff;
     color: #222222;
 }
 
-.app #game-content span {
+.app #app-content span {
     margin-right: 1vw;
     text-overflow: ellipsis;
     font-weight: bold;
