@@ -297,13 +297,13 @@ fetch('./lib/games.json')
             const appElement = document.createElement("div");
             appElement.classList.add("app");
             appElement.innerHTML = `
-        <div class="img" loading="lazy" data-src="${app[2]}" onclick="openApp('${app[0]}', '${app[3]}')">
+        <div class="img" loading="lazy" data-src="${app[2]}" onclick="play('${app[0]}', '${app[3]}')">
           <div class="cover"></div>
         </div>
-        <div id="app-content" class="app-content">
+        <div id="game-content" class="game-content">
           <h1>${app[0]}</h1>
           <p>${app[1]}</p>
-          <button class="install" onclick="openApp('${app[0]}','${app[3]}')">Open</button>
+          <button class="install" onclick="play('${app[0]}','${app[3]}')">Play</button>
           <span>(Credit: ${app[4]})</span>
         </div>
       `;
