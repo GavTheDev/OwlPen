@@ -41,6 +41,13 @@ body {
     overflow: hidden;
 }
 
+.title {
+    text-align: center;
+    display: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .main {
     display: flex;
     justify-content: center;
