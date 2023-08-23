@@ -452,8 +452,8 @@ function search() {
     appsFound = filterItems(document.getElementById("apps"), 'app');
 
     // Show or hide titles based on whether items were found in each category
-    document.getElementById('gamesTitle').style.display = gamesFound ? "" : "none";
-    document.getElementById('appsTitle').style.display = appsFound ? "" : "none";
+    document.getElementById('gamesTitle').style.display = gamesFound ? "block" : "none";
+    document.getElementById('appsTitle').style.display = appsFound ? "block" : "none";
 
     // Handle cases when no games or apps match the filter.
     if (!gamesFound && !appsFound) {
@@ -477,6 +477,13 @@ function search() {
     }
 }
 
+// Attach focus and focusout events to search input to handle the title visibility
+document.getElementById('search').addEventListener('focusout', () => {
+    if (document.getElementById('search').value === "") {
+        document.getElementById('gamesTitle').style.display = 'none';
+        document.getElementById('appsTitle').style.display = 'none';
+    }
+});
 
 // Function to open and close settings panel.
 function settings() {
