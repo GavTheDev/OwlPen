@@ -2,7 +2,7 @@
    "name": "Starfield",
    "short_name" : "Starfield",
    "scope": "./",
-   "start_url" : "./",
+   "start_url" : "https://www.owlpentest.com/starfield",
    "prefer_related_applications": false,
    "display": "fullscreen",
    "background_color": "#2d2d2d",
