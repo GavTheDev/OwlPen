@@ -32,15 +32,6 @@ body {
     overflow-x: hidden;
 }
 
-.top {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 83.5vh;
-    width: 100%;
-    overflow: hidden;
-}
-
 .title {
     text-align: center;
     font-size: 40px;
@@ -53,7 +44,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 25vh;
+    height: 20vh;
     margin-top: -4vw;
 }
 
