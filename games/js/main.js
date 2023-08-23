@@ -13,7 +13,7 @@
 */
 
 // Custom developer console message.
-window.onload = console.log("               Be careful in here.\n\n _.~\"(_.~\"(_.~\"(_.~\"(_.~\"(_.~\"(_.~\"(_.~\"(_.~\"(_.~\"(");
+window.onload = console.log (' _^_\n |@|         Be Careful Here\n<===>\n #::\n #::\n#███:^-.\n████████^ ~"(_.~"(_.~"(_.~"(_.~"(');
 
 // Retrieve the '<div></div>' element of the settings panel.
 var settingsDiv = document.getElementById('settings');
