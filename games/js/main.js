@@ -418,59 +418,65 @@ window.addEventListener("scroll", function() {
 
 // Function to perform a game search.
 function search() {
-  var games = document.getElementsByClassName('game');
-  var scrollDiv = document.getElementById("games").offsetTop - 140;
-  var scrollDiv2 = document.getElementById("main").offsetTop;
-  var gamesLeft = 0;
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('search');
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("games");
-  li = ul.getElementsByClassName('game');
+    var games = document.getElementsByClassName('game');
+    var apps = document.getElementsByClassName('app');
+    var scrollDiv2 = document.getElementById("main").offsetTop;
+    var gamesFound = false;
+    var appsFound = false;
+    var input, filter, ul, li, a, i, txtValue;
 
-  // Iterate through games and filter.
-  for (i = 0; i < li.length; i += 1) {
-    a = li[i].getElementsByTagName("h1")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
+    input = document.getElementById('search');
+    filter = input.value.toUpperCase();
+    
+    // Function to filter items by their <h1> tag content and determine if items are found
+    function filterItems(ul, className) {
+        var found = false;
+        li = ul.getElementsByClassName(className);
+        for (i = 0; i < li.length; i += 1) {
+            a = li[i].getElementsByTagName("h1")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+                found = true;
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+        return found;
+    }
+    
+    // Filter games
+    gamesFound = filterItems(document.getElementById("games"), 'game');
+
+    // Filter apps
+    appsFound = filterItems(document.getElementById("apps"), 'app');
+
+    // Show or hide titles based on whether items were found in each category
+    document.getElementById('gamesTitle').style.display = gamesFound ? "" : "none";
+    document.getElementById('appsTitle').style.display = appsFound ? "" : "none";
+
+    // Handle cases when no games or apps match the filter.
+    if (!gamesFound && !appsFound) {
+        document.getElementById('error').style.display = 'block';
+        document.getElementById('footer').style.display = 'none';
+        window.scrollTo({ top: scrollDiv2, behavior: 'instant' });
+        document.getElementById('games').style.display = 'none';
+        document.getElementById('apps').style.display = 'none';  
     } else {
-      li[i].style.display = "none";
+        document.getElementById('error').style.display = 'none';
+        if (gamesFound) {
+            document.getElementById('games').style.display = 'grid';  
+        } else {
+            document.getElementById('games').style.display = 'none';
+        }
+        if (appsFound) {
+            document.getElementById('apps').style.display = 'grid';   
+        } else {
+            document.getElementById('apps').style.display = 'none';
+        }
     }
-  }
-
-  // Check amount of games left.
-  for (i = 0; i < games.length; i += 1) {
-    if (games[i].style.display === 'none') {
-      gamesLeft += 1;
-    }
-  }
-
-  // Handle cases when no games match the filter.
-  if (gamesLeft === games.length) {
-    document.getElementById('error').style.display = 'block';
-    document.getElementById('footer').style.display = 'none';
-    window.scrollTo({ top: scrollDiv2, behavior: 'instant' });
-    document.getElementById('games').style.display = 'none';
-  } else {
-    window.scrollTo({ top: scrollDiv, behavior: 'instant' });
-    document.getElementById('error').style.display = 'none';
-    document.getElementById('games').style.display = 'grid';
-  }
-  window.scrollTo({ top: scrollDiv, behavior: 'instant' });
 }
 
-// Attach focus and focusout events to search input.
-document.getElementById('search').addEventListener('focus', () => {
-  document.getElementById('games').style.marginBottom = '28.8vw';
-  document.getElementById('footer').style.display = 'none';
-});
-document.getElementById('search').addEventListener('focusout', () => {
-  document.getElementById('games').style.marginBottom = '1.5vw';
-  if (document.getElementById('error').style.display === 'none') {
-    // Do nothing
-  }
-});
 
 // Function to open and close settings panel.
 function settings() {
