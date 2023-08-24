@@ -354,54 +354,90 @@ function play(game, url) {
 }
 
 // Function to switch game perspective.
-function gamesPerspective() {
-  const gameContent = Array.from(document.getElementsByClassName('game-content'));
-  const games = Array.from(document.getElementsByClassName('game'));
-  const images = Array.from(document.getElementsByClassName('img'));
-  if (document.getElementById('games').style.gridTemplateColumns === 'repeat(9, 9.5vw)') {
+function Perspective() {
+// For games
+const gameContent = Array.from(document.getElementsByClassName('game-content'));
+const games = Array.from(document.getElementsByClassName('game'));
+const gameImages = Array.from(document.getElementsByClassName('img'));  // Images for games
+
+if (document.getElementById('games').style.gridTemplateColumns === 'repeat(9, 9.5vw)') {
     gameContent.forEach(game => {
-      games.forEach(gameTab => {
-        gameTab.style.backgroundColor = '#222222';
-        gameTab.style.padding = '1.2vw';
-        gameTab.style.display = 'flex';
-      });
-      game.style.display = 'block';
-      document.getElementById('games').style.gridTemplateColumns = '.1fr .1fr';
-      document.getElementById('games').style.marginLeft = '.6vw';
+        games.forEach(gameTab => {
+            gameTab.style.backgroundColor = '#222222';
+            gameTab.style.padding = '1.2vw';
+            gameTab.style.display = 'flex';
+        });
+        game.style.display = 'block';
+        document.getElementById('games').style.gridTemplateColumns = '.1fr .1fr';
+        document.getElementById('games').style.marginLeft = '.6vw';
     });
-  } else {
+} else {
     gameContent.forEach(game => {
-      games.forEach(gameTab => {
-        gameTab.style.backgroundColor = 'transparent';
-        gameTab.style.padding = '0px';
-        gameTab.style.display = 'block';
-      });
-      game.style.display = 'none';
-      document.getElementById('games').style.gridTemplateColumns = 'repeat(9, 9.5vw)';
-      document.getElementById('games').style.marginLeft = '1vw';
+        games.forEach(gameTab => {
+            gameTab.style.backgroundColor = 'transparent';
+            gameTab.style.padding = '0px';
+            gameTab.style.display = 'block';
+        });
+        game.style.display = 'none';
+        document.getElementById('games').style.gridTemplateColumns = 'repeat(9, 9.5vw)';
+        document.getElementById('games').style.marginLeft = '1vw';
     });
-    images.forEach(image => {
-      image.style.width = '10vw';
-      image.style.height = '10vw';
+    gameImages.forEach(image => {
+        image.style.width = '10vw';
+        image.style.height = '10vw';
     });
-  }
 }
+
+// For apps
+const appContent = Array.from(document.getElementsByClassName('app-content'));
+const apps = Array.from(document.getElementsByClassName('app'));
+const appImages = Array.from(document.getElementsByClassName('img'));  // Images for apps
+
+if (document.getElementById('apps').style.gridTemplateColumns === 'repeat(9, 9.5vw)') {
+    appContent.forEach(app => {
+        apps.forEach(appTab => {
+            appTab.style.backgroundColor = '#222222';
+            appTab.style.padding = '1.2vw';
+            appTab.style.display = 'flex';
+        });
+        app.style.display = 'block';
+        document.getElementById('apps').style.gridTemplateColumns = '.1fr .1fr';
+        document.getElementById('apps').style.marginLeft = '.6vw';
+    });
+} else {
+    appContent.forEach(app => {
+        apps.forEach(appTab => {
+            appTab.style.backgroundColor = 'transparent';
+            appTab.style.padding = '0px';
+            appTab.style.display = 'block';
+        });
+        app.style.display = 'none';
+        document.getElementById('apps').style.gridTemplateColumns = 'repeat(9, 9.5vw)';
+        document.getElementById('apps').style.marginLeft = '1vw';
+    });
+    appImages.forEach(image => {
+        image.style.width = '10vw';
+        image.style.height = '10vw';
+    });
+}
+}
+
 
 // Toggle game perspective icon.
 function toggleIcon() {
-  var icon = document.getElementById('gamePerspectiveIcon');
+  var icon = document.getElementById('PerspectiveIcon');
   if (icon.classList.contains('fa-regular')) {
     icon.classList.remove('fa-regular');
     icon.classList.remove('fa-down-left-and-up-right-to-center');
     icon.classList.add('fa-solid');
     icon.classList.add('fa-up-right-and-down-left-from-center');
-    gamesPerspective();
+    Perspective();
   } else {
     icon.classList.remove('fa-solid');
     icon.classList.remove('fa-up-right-and-down-left-from-center');
     icon.classList.add('fa-regular');
     icon.classList.add('fa-down-left-and-up-right-to-center');
-    gamesPerspective();
+    Perspective();
   }
 }
 
