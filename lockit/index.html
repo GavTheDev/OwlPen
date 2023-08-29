@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8"/>
-		<title>LockIt | Open Source</title>
-    <link href="./lockit/img/logo.png" rel="icon"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
+<head>
+    <meta charset="utf-8" />
+    <title>LockIt | Open Source</title>
+    <link href="./img/logo.png" rel="icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <!-- Stylesheets -->
-		<link href="./css/raleway.css" rel="stylesheet" />
-		<link href="./lockit/css/style.css" rel="stylesheet"/>
-	</head>
-	<body>
+    <link href="./css/raleway.css" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
+</head>
+
+<body>
     <!--
          #        .--.       .--.
          #    _  `    \     /    `  _
@@ -27,61 +29,62 @@
          #       .'             `.
          #    _,'                 `,_
          -->
-		<a class="back"></a>
-		<div id="stage">
-      <!-- Option Selection -->
-			<div id="step1">
-				<div class="content">
-					<h1><b>LockIt | Web Edition</b></h1>
-					<a class="button encrypt green">Encrypt A File</a>
-					<a class="button decrypt magenta">Decrypt A File</a>
-				</div>
-			</div>
-			<div id="step2">
-				<div class="content if-encrypt">
-          <!-- Selecting a file to encrypt-->
-					<h1>Please select a file to encrypt.</h1>
-					<h2>An encrypted copy of the file will be generated. <br><b>No data is saved to our servers.</b></h2>
-					<a class="button browse blue">Select</a>
-					<input type="file" id="encrypt-input" />
-				</div>
-				<div class="content if-decrypt">
-          <!-- Selecting a file to decrypt -->
-					<h1>Select A File To Decrypt</h1>
-					<h2><b>Only files encrypted by this tool are accepted.</b></h2>
-					<a class="button browse blue">Select</a>
-					<input type="file" id="decrypt-input" />
-				</div>
-			</div>
-			<div id="step3">
-				<div class="content if-encrypt">
-          <!-- Entering a passkey for the file to encrypt -->
-					<h1>Enter A Passphrase</h1>
-					<h2>This passphrase will be used as an encryption key. Write it down or remember it; <b>you won't be able to restore the file without it.</b></h2>
-					<input type="password" />
-					<a class="button process red">Encrypt</a>
-				</div>
-				<div class="content if-decrypt">
-          <!-- Entering a passkey for the file to decrypt -->
-					<h1>Enter A Passphrase</h1>
-					<h2>Enter the passphrase that was used to encrypt this file. <b>It is not possible to decrypt it without it.</b></h2>
-					<input type="password" />
-					<a class="button process red">Decrypt</a>
-				</div>
-			</div>
-			<div id="step4">
-				<div class="content">
-          <!-- Download finished file -->
-					<h1>Your file is ready!</h1>
-					<a class="button download green">Download</a>
-				</div>
-			</div>
-		</div>
-	</body>
-  
-	<!-- Backend Scripts -->
-	<script src="./js/aes.js"></script>
-	<script src="./js/jquery.min.js"></script>
-	<script src="./js/script.js"></script>
-  <script src="./js/mobiledetector.js"></script>
+    <a class="back"></a>
+    <div id="stage">
+        <!-- Option Selection -->
+        <div id="step1">
+            <div class="content">
+                <h1><b>LockIt | Web Edition</b></h1>
+                <a class="button encrypt green">Encrypt A File</a>
+                <a class="button decrypt magenta">Decrypt A File</a>
+            </div>
+        </div>
+        <div id="step2">
+            <div class="content if-encrypt">
+                <!-- Selecting a file to encrypt-->
+                <h1>Please select a file to encrypt.</h1>
+                <h2>An encrypted copy of the file will be generated. <br><b>No data is saved to our servers.</b></h2>
+                <a class="button browse blue">Select</a>
+                <input type="file" id="encrypt-input" />
+            </div>
+            <div class="content if-decrypt">
+                <!-- Selecting a file to decrypt -->
+                <h1>Select A File To Decrypt</h1>
+                <h2><b>Only files encrypted by this tool are accepted.</b></h2>
+                <a class="button browse blue">Select</a>
+                <input type="file" id="decrypt-input" />
+            </div>
+        </div>
+        <div id="step3">
+            <div class="content if-encrypt">
+                <!-- Entering a passkey for the file to encrypt -->
+                <h1>Enter A Passphrase</h1>
+                <h2>This passphrase will be used as an encryption key. Write it down or remember it; <b>you won't be able to restore the file without it.</b></h2>
+                <input type="password" />
+                <a class="button process red">Encrypt</a>
+            </div>
+            <div class="content if-decrypt">
+                <!-- Entering a passkey for the file to decrypt -->
+                <h1>Enter A Passphrase</h1>
+                <h2>Enter the passphrase that was used to encrypt this file. <b>It is not possible to decrypt it without it.</b></h2>
+                <input type="password" />
+                <a class="button process red">Decrypt</a>
+            </div>
+        </div>
+        <div id="step4">
+            <div class="content">
+                <!-- Download finished file -->
+                <h1>Your file is ready!</h1>
+                <a class="button download green">Download</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Backend Scripts -->
+<script src="./js/aes.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="./js/mobiledetector.js"></script>
+
 </html>
