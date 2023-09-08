@@ -10,13 +10,13 @@
    "description" : "Fast and easy unblocking.",
    "icons": [
     {
-      "src": "https://starfield.owlpentest.com/favicon.svg",
+      "src": "https://sf.owlpentest.com/favicon.svg",
       "type": "image/png",
       "sizes": "2085x2085",
       "purpose": "maskable"
     },
     {
-      "src": "https://starfield.owlpentest.com/apple-touch-icon.png",
+      "src": "https://sf.owlpentest.com/apple-touch-icon.png",
       "type": "image/png",
       "sizes": "192x192"
     }
