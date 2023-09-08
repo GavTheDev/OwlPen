@@ -28,11 +28,6 @@
 <body>
     <iframe src="https://sf.owlpentest.com/" /></iframe>
     <script>
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("sw.js");
-        }
-    </script>
-    <script>
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigator.userAgent)) {
     window.location.href = "https://www.owlpentest.com/mobile-error";
     }
