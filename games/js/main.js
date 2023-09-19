@@ -271,13 +271,13 @@ fetch('./lib/games.json')
             const gameElement = document.createElement("div");
             gameElement.classList.add("game");
             gameElement.innerHTML = `
-        <div class="img" loading="lazy" data-src="${game[2]}" onclick="play('${game[0]}', '${game[3]}')">
+        <div class="img" loading="lazy" data-src="${game[2]}" target="${game[5]}" onclick="play('${game[0]}', '${game[3]}')">
           <div class="cover"></div>
         </div>
         <div id="game-content" class="game-content">
           <h1>${game[0]}</h1>
           <p>${game[1]}</p>
-          <button class="install" onclick="play('${game[0]}','${game[3]}')">Play</button>
+          <button class="install" target="${game[5]}" onclick="play('${game[0]}','${game[3]}')">Play</button>
           <span>(Credit: ${game[4]})</span>
         </div>
       `;
