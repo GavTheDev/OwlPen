@@ -271,13 +271,13 @@ fetch('./lib/games.json')
             const gameElement = document.createElement("div");
             gameElement.classList.add("game");
             gameElement.innerHTML = `
-        <div class="img" loading="lazy" data-src="${game[2]}" target="${game[5]}" onclick="play('${game[0]}', '${game[3]}')">
+        <div class="img" loading="lazy" data-src="${game[2]}" onclick="play('${game[0]}', '${game[3]}')">
           <div class="cover"></div>
         </div>
         <div id="game-content" class="game-content">
           <h1>${game[0]}</h1>
           <p>${game[1]}</p>
-          <button class="install" target="${game[5]}" onclick="play('${game[0]}','${game[3]}')">Play</button>
+          <button class="install" onclick="play('${game[0]}','${game[3]}')">Play</button>
           <span>(Credit: ${game[4]})</span>
         </div>
       `;
@@ -342,6 +342,7 @@ function observeImage(imgElement) {
 function play(game, url) {
   localStorage.setItem('game', game);
   const gameFrame = document.getElementById('game-frame');
+  const target = game[5] === '_blank' ? '_blank' : 'iframe';
   if (gameFrame.style.display === 'block') {
     gameFrame.style.display = 'none';
     document.getElementById('iframe').src = '';
@@ -350,6 +351,9 @@ function play(game, url) {
     gameFrame.style.display = 'block';
     document.getElementById('iframe').src = url;
     document.body.style.overflowY = 'hidden';
+    if (target === '_blank') {
+      window.open(url, target);
+    }
   }
 }
 
@@ -535,7 +539,7 @@ setInterval(() => {
       window.addEventListener('scroll', handleScroll);
   }
   const searchInput = document.getElementById('search');
-}, 100);
+}, 100);F
 
 
 // Attach click events to options to switch pages.
