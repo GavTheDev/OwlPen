@@ -342,7 +342,6 @@ function observeImage(imgElement) {
 function play(game, url) {
   localStorage.setItem('game', game);
   const gameFrame = document.getElementById('game-frame');
-  const target = game[5] === '_blank' ? '_blank' : 'iframe';
   if (gameFrame.style.display === 'block') {
     gameFrame.style.display = 'none';
     document.getElementById('iframe').src = '';
@@ -351,9 +350,6 @@ function play(game, url) {
     gameFrame.style.display = 'block';
     document.getElementById('iframe').src = url;
     document.body.style.overflowY = 'hidden';
-    if (target === '_blank') {
-      window.open(url, target);
-    }
   }
 }
 
@@ -539,7 +535,7 @@ setInterval(() => {
       window.addEventListener('scroll', handleScroll);
   }
   const searchInput = document.getElementById('search');
-}, 100);F
+}, 100);
 
 
 // Attach click events to options to switch pages.
