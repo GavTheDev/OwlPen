@@ -1,5 +1,5 @@
 
-![Logo](https://cdn.owlpentest.com/assets/images/full-logo.png)
+![Logo](https://www.owlpentest.com/assets/images/full-logo.png)
 
 
 ## License
