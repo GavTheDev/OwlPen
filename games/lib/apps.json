@@ -8,24 +8,31 @@
     ],
     [
         "Google",
-        "Google it.",
+        "A popular search engine.",
         "https://www.owlpentest.com/games/images/google.jpg",
-        "https://sf.owlpentest.com/route.html?url=https://google.com",
+        "https://sf.owlpentest.com/route.html?url=https://www.google.com",
         "Google, LLC"
+    ],
+    [
+        "TikTok",
+        "On a device or on the web, viewers can watch and discover millions of personalized short videos.",
+        "https://www.owlpentest.com/games/images/tiktok.png",
+        "https://sf.owlpentest.com/route.html?url=https://www.tiktok.com/",
+        "ByteDance"
+    ],
+    [
+        "Cool Math Games",
+        "Cool Math Games is an online platform for educational games that enhance math and other skills.",
+        "https://www.owlpentest.com/games/images/coolmathgames.png",
+        "https://sf.owlpentest.com/route.html?url=https://coolmathgames.com",
+        "Coolmath LLC"
     ],
     [
         "YouTube",
         "YouTube is a popular video sharing platform.",
         "https://www.owlpentest.com/games/images/ytpng.png",
-        "https://sf.owlpentest.com/route.html?url=https://youtube.com",
+        "https://sf.owlpentest.com/route.html?url=https://www.youtube.com",
         "Google, LLC"
-    ],
-    [
-        "Spotify",
-        "Spotify is a digital music service.",
-        "https://www.owlpentest.com/games/images/spotify.png",
-        "https://sf.owlpentest.com/route.html?url=https://open.spotify.com/",
-        "Spotify USA, Inc."
     ],
     [
         "Speedtest",
@@ -38,49 +45,49 @@
         "Twitch",
         "Twitch is a live streaming platform.",
         "https://www.owlpentest.com/games/images/twitch.jpg",
-        "https://sf.owlpentest.com/route.html?url=https://twitch.tv",
+        "https://sf.owlpentest.com/route.html?url=https://www.twitch.tv/",
         "Amazon, Inc."
     ],
     [
         "Discord",
         "Discord is a communication platform.",
         "https://www.owlpentest.com/games/images/discord.png",
-        "https://sf.owlpentest.com/route.html?url=https://discord.com",
+        "https://sf.owlpentest.com/route.html?url=https://www.discord.com/",
         "Discord, Inc."
     ],
     [
         "Reddit",
         "Reddit is an online community.",
         "https://www.owlpentest.com/games/images/reddit.png",
-        "https://sf.owlpentest.com/route.html?url=https://reddit.com",
+        "https://sf.owlpentest.com/route.html?url=https://www.reddit.com/",
         "Advance Publications"
     ],
     [
         "Facebook",
         "Facebook is a social networking platform.",
         "https://www.owlpentest.com/games/images/facebook.png",
-        "https://sf.owlpentest.com/route.html?url=https://facebook.com",
+        "https://sf.owlpentest.com/route.html?url=https://www.facebook.com/",
         "Meta Platforms, Inc."
     ],
     [
         "GitHub",
         "A web-based hosting service for coding projects.",
         "https://www.owlpentest.com/games/images/github.png",
-        "https://sf.owlpentest.com/route.html?url=https://github.com",
+        "https://sf.owlpentest.com/route.html?url=https://www.github.com/",
         "Microsoft Corporation"
     ],
     [
         "Replit",
         "Replit is an online coding IDE that allows you to code in your browser.",
         "https://www.owlpentest.com/games/images/replit.jpg",
-        "https://sf.owlpentest.com/route.html?url=https://replit.com",
+        "https://sf.owlpentest.com/route.html?url=https://www.replit.com/",
         "Amjad Masad"
     ],
     [
         "Visual Studio Code",
         "Visual Studio Code is a free web code editor.",
         "https://www.owlpentest.com/games/images/vscode.jpeg",
-        "https://sf.owlpentest.com/route.html?url=https://vscode.dev/",
+        "https://sf.owlpentest.com/route.html?url=https://www.vscode.dev/",
         "Microsoft Corporation"
     ],
     [
@@ -99,9 +106,9 @@
     ],
     [
         "Bard",
-        "A large language model from Google AI, trained on a massive dataset of text and code.",
+        "A large language model from Google AI trained on a massive dataset of text and code.",
         "https://www.gstatic.com/lamda/images/favicon_v1_150160cddff7f294ce30.svg",
-        "https://sf.owlpentest.com/route.html?url=bard.google.com",
+        "https://sf.owlpentest.com/route.html?url=https://bard.google.com/",
         "Google LLC"
     ]
 ]
