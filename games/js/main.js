@@ -12,6 +12,152 @@
       \_/
 */
 
+// Check if the client is mobile.
+window.onload = function() {
+    var isMobileSafari = /iP(ad|od|hone)/i.test(navigator.platform) && /WebKit/i.test(navigator.userAgent) && !(/(CriOS|FxiOS)/i.test(navigator.userAgent));
+    if (!CSS.supports('backdrop-filter', 'blur(18px)') || isMobileSafari) {
+        var navigation = document.querySelector('#navigation');
+        if (navigation) {
+            navigation.style.backdropFilter = '';
+            navigation.style.backgroundColor = '#2b2b2bf1';
+        }
+    }
+}
+
+// Adjust UI if mobile.
+if (mobile) {
+    function search() {
+        let inputValue = document.getElementById('search').value.toLowerCase();
+        let games = document.querySelectorAll('#games .game');
+        let noResults = true; 
+    
+        games.forEach(function(game) {
+            let gameTitle = game.querySelector('h1').textContent.toLowerCase();
+    
+            if (gameTitle.includes(inputValue)) {
+                game.style.display = 'flex';
+                noResults = false;
+            } else {
+                game.style.display = 'none';
+            }
+        });
+    
+        let existingMessage = document.getElementById('noResultsMessage');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+    
+        if (noResults) {
+            let message = document.createElement('div');
+            message.id = 'noResultsMessage';
+            message.textContent = 'Sorry, no results :(';
+            message.style.fontSize = '6vw';
+            message.style.textAlign = 'center';
+            message.style.fontWeight = '700';
+            message.style.width = '100vw';
+            document.getElementById('games').appendChild(message);
+        }
+    }
+} else {
+    function search() {
+        var games = document.getElementsByClassName('game');
+        var input = document.getElementById('search');
+        var filter = input.value.toUpperCase();
+        var ul = document.getElementById("games");
+        var li = ul.getElementsByClassName('game');
+        
+        var searchResults = document.getElementById("searchResults");
+        
+        if (input.value === '') {
+            searchResults.innerHTML = '';
+        }
+    }
+
+
+    function clearSearch() {
+        const searchInput = document.getElementById("search");
+        const searchResults = document.getElementById("searchResults");
+        const searchButton = document.getElementById("settings-button-div");
+        searchInput.style.borderBottomLeftRadius = '1vw';
+        searchButton.style.borderBottomRightRadius = '1vw';
+        searchResults.innerHTML = ''; 
+        searchInput.value = ''; 
+        searchResults.style.opacity = '0';
+    }
+
+    document.getElementById('search').addEventListener('input', search);
+    let uniqueGames = new Set();
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.getElementById("search");
+        const searchResults = document.getElementById("searchResults");
+        const searchButton = document.getElementById("settings-button-div");
+        const uniqueGames = new Set();  // Initialize the uniqueGames set if it's not already defined
+
+        window.search = function() {
+            uniqueGames.clear(); // Clear the set at the beginning of a new search
+            const query = searchInput.value;
+        
+            let filteredGames = [];
+            const allGames = document.querySelectorAll("#games .game");
+        
+            allGames.forEach(game => {
+                const title = game.querySelector("h1").textContent;
+                const imageSrc = game.querySelector("img").dataset.src;
+                const description = game.querySelector(".description-search").textContent; // Fetch the description
+                const gameUrl = game.querySelector(".game-url").textContent; // Fetch the game URL
+                
+                if (title.toLowerCase().includes(query.toLowerCase())) {
+                    if (!uniqueGames.has(title)) { // Check if the game is unique
+                        uniqueGames.add(title); // Add to unique set
+                        filteredGames.push({ title, imageSrc, description, gameUrl }); // Add description and game URL here
+                    }
+                }
+            });
+        
+            searchResults.innerHTML = '';
+        
+            if (filteredGames.length > 0) {
+                searchInput.style.borderBottomLeftRadius = '0';
+                searchInput.style.borderBottomRightRadius = '0';
+                searchButton.style.borderBottomRightRadius = '0';
+                searchResults.style.opacity = '1';
+                searchResults.style.zIndex = '9999999';
+                
+                filteredGames.forEach(game => {
+                    const resultDiv = document.createElement("div");
+                    resultDiv.classList.add("result");
+                    resultDiv.innerHTML = `
+                        <img data-src="${game.imageSrc}" alt="${game.title}">
+                        <h1>${game.title}</h1>
+                    `;
+                    observeImage(resultDiv.querySelector("img"));
+                    resultDiv.addEventListener("click", function() {
+                        play(game.title, game.gameUrl, game.title, game.description);
+                        clearSearch();
+                    });
+        
+                    searchResults.appendChild(resultDiv);
+                });
+            } else {
+                const noResultsDiv = document.createElement("h2");
+                noResultsDiv.classList.add("no-results");
+                noResultsDiv.textContent = "Sorry, no results :(";
+                noResultsDiv.style.fontSize = "19px";
+                noResultsDiv.style.textAlign = "center";
+                noResultsDiv.style.paddingBottom = ".8vw";
+                searchResults.appendChild(noResultsDiv);
+            }
+
+            document.addEventListener('mousedown', function(event) {
+                if (!searchInput.contains(event.target) && !searchResults.contains(event.target) && event.target !== searchInput && event.target !== searchResults) {
+                    clearSearch();
+                }
+            });
+        }; 
+    });
+}
+
 // Custom developer console message.
 window.onload = console.log (' _^_\n |@|         Be Careful Here\n<===>\n #::\n #::\n#███:^-.\n████████^ ~"(_.~"(_.~"(_.~"(_.~"(');
 
