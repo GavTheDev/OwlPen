@@ -12,249 +12,6 @@
       \_/
 */
 
-// Set mobile pixel width.
-var mobile = window.innerWidth < 850;
-
-// Check if the client is mobile.
-window.onload = function() {
-    var isMobileSafari = /iP(ad|od|hone)/i.test(navigator.platform) && /WebKit/i.test(navigator.userAgent) && !(/(CriOS|FxiOS)/i.test(navigator.userAgent));
-    if (!CSS.supports('backdrop-filter', 'blur(18px)') || isMobileSafari) {
-        var navigation = document.querySelector('#navigation');
-        if (navigation) {
-            navigation.style.backdropFilter = '';
-            navigation.style.backgroundColor = '#2b2b2bf1';
-        }
-    }
-}
-
-// Check screen width for mobile UI change.
-function checkScreenWidth() {
-    var mobile = window.innerWidth < 850;
-
-    if (mobile) {
-        document.getElementById('navigation').classList.add("mobile");
-        document.getElementById('footer').classList.add("mobile");
-        document.getElementById('top').style.display = 'none';
-        document.getElementById('games').classList.add("mobile");
-        document.getElementById('controls').classList.add("mobile");
-        document.getElementById('game-banner').style.display = 'none';
-        document.getElementById('game-banner-right').style.display = 'none';
-    } else {
-        document.getElementById('navigation').classList.remove("mobile");
-        document.getElementById('footer').classList.remove("mobile");
-        document.getElementById('games').classList.remove("mobile");
-        document.getElementById('controls').classList.remove("mobile");
-    }
-}
-
-
-// Adjust UI if mobile.
-if (mobile) {
-    function search() {
-        let inputValue = document.getElementById('search').value.toLowerCase();
-        let games = document.querySelectorAll('#games .game');
-        let noResults = true; 
-    
-        games.forEach(function(game) {
-            let gameTitle = game.querySelector('h1').textContent.toLowerCase();
-    
-            if (gameTitle.includes(inputValue)) {
-                game.style.display = 'flex';
-                noResults = false;
-            } else {
-                game.style.display = 'none';
-            }
-        });
-    
-        let existingMessage = document.getElementById('noResultsMessage');
-        if (existingMessage) {
-            existingMessage.remove();
-        }
-    
-        if (noResults) {
-            let message = document.createElement('div');
-            message.id = 'noResultsMessage';
-            message.textContent = 'Sorry, no results :(';
-            message.style.fontSize = '6vw';
-            message.style.textAlign = 'center';
-            message.style.fontWeight = '700';
-            message.style.width = '100vw';
-            document.getElementById('games').appendChild(message);
-        }
-    }
-} else {
-    function search() {
-        var games = document.getElementsByClassName('game');
-        var input = document.getElementById('search');
-        var filter = input.value.toUpperCase();
-        var ul = document.getElementById("games");
-        var li = ul.getElementsByClassName('game');
-        
-        var searchResults = document.getElementById("searchResults");
-        
-        if (input.value === '') {
-            searchResults.innerHTML = '';
-        }
-    }
-
-
-    function clearSearch() {
-        const searchInput = document.getElementById("search");
-        const searchResults = document.getElementById("searchResults");
-        const searchButton = document.getElementById("settings-button-div");
-        searchInput.style.borderBottomLeftRadius = '1vw';
-        searchButton.style.borderBottomRightRadius = '1vw';
-        searchResults.innerHTML = ''; 
-        searchInput.value = ''; 
-        searchResults.style.opacity = '0';
-    }
-
-    document.getElementById('search').addEventListener('input', search);
-    let uniqueGames = new Set();
-
-    document.addEventListener("DOMContentLoaded", function() {
-        const searchInput = document.getElementById("search");
-        const searchResults = document.getElementById("searchResults");
-        const searchButton = document.getElementById("settings-button-div");
-        const uniqueGames = new Set();  // Initialize the uniqueGames set if it's not already defined
-
-        window.search = function() {
-            uniqueGames.clear(); // Clear the set at the beginning of a new search
-            const query = searchInput.value;
-        
-            let filteredGames = [];
-            const allGames = document.querySelectorAll("#games .game");
-        
-            allGames.forEach(game => {
-                const title = game.querySelector("h1").textContent;
-                const imageSrc = game.querySelector("img").dataset.src;
-                const description = game.querySelector(".description-search").textContent; // Fetch the description
-                const gameUrl = game.querySelector(".game-url").textContent; // Fetch the game URL
-                
-                if (title.toLowerCase().includes(query.toLowerCase())) {
-                    if (!uniqueGames.has(title)) { // Check if the game is unique
-                        uniqueGames.add(title); // Add to unique set
-                        filteredGames.push({ title, imageSrc, description, gameUrl }); // Add description and game URL here
-                    }
-                }
-            });
-        
-            searchResults.innerHTML = '';
-        
-            if (filteredGames.length > 0) {
-                searchInput.style.borderBottomLeftRadius = '0';
-                searchInput.style.borderBottomRightRadius = '0';
-                searchButton.style.borderBottomRightRadius = '0';
-                searchResults.style.opacity = '1';
-                searchResults.style.zIndex = '9999999';
-                
-                filteredGames.forEach(game => {
-                    const resultDiv = document.createElement("div");
-                    resultDiv.classList.add("result");
-                    resultDiv.innerHTML = `
-                        <img data-src="${game.imageSrc}" alt="${game.title}">
-                        <h1>${game.title}</h1>
-                    `;
-                    observeImage(resultDiv.querySelector("img"));
-                    resultDiv.addEventListener("click", function() {
-                        play(game.title, game.gameUrl, game.title, game.description);
-                        clearSearch();
-                    });
-        
-                    searchResults.appendChild(resultDiv);
-                });
-            } else {
-                const noResultsDiv = document.createElement("h2");
-                noResultsDiv.classList.add("no-results");
-                noResultsDiv.textContent = "Sorry, no results :(";
-                noResultsDiv.style.fontSize = "19px";
-                noResultsDiv.style.textAlign = "center";
-                noResultsDiv.style.paddingBottom = ".8vw";
-                searchResults.appendChild(noResultsDiv);
-            }
-
-            document.addEventListener('mousedown', function(event) {
-                if (!searchInput.contains(event.target) && !searchResults.contains(event.target) && event.target !== searchInput && event.target !== searchResults) {
-                    clearSearch();
-                }
-            });
-        }; 
-    });
-}
-
-// count unique games to console use later idk
-
-async function countUniqueGames() {
-    const response = await fetch('games.json');
-    const data = await response.json();
-  
-    const uniqueGames = new Set();
-  
-    const addGames = (gamesArray) => {
-      gamesArray.forEach(game => {
-        const gameName = game[0];
-        uniqueGames.add(gameName);
-      });
-    };
-  
-    for (const category in data) {
-      addGames(data[category]);
-    }
-  
-    console.log(`Games: ${uniqueGames.size}`);
-}
-  
-countUniqueGames();
-
-document.getElementById('clickyBox').onclick = function() {
-    closeControls(event)
-}
-
-const clickyBox = document.getElementById('clickyBox');
-const hoverMessage = document.getElementById('hoverMessage');
-
-clickyBox.addEventListener('mousemove', function(e) {
-    hoverMessage.style.display = 'block';
-    hoverMessage.style.left = (e.clientX - 60) + 'px'; 
-    hoverMessage.style.top = (e.clientY - 60) + 'px';
-});
-
-clickyBox.addEventListener('mouseleave', function() {
-    hoverMessage.style.display = 'none';
-});
-
-// ipad crap
-
-function isIpad() {
-    //var tru = 1;
-    //return tru = 1;
-    return /iPad|Macintosh/.test(navigator.userAgent) && 'ontouchend' in document;
-}
-
-if (isIpad()) {
-    document.getElementById('game-banner').style.display = 'none';
-    document.getElementById('game-banner-right').style.display = 'none';
-    document.getElementById('navigation').style.backdropFilter = 'none';
-    document.getElementById('navigation').style.backgroundColor = '#2b2b2bf6';
-    document.getElementById('game-frame').style.backdropFilter = 'none';
-    document.getElementById('game-frame').style.backgroundColor = '#181818fb';
-    document.getElementById('game-frame').style.height = '100vh';
-    document.getElementById('game-frame').style.top = '0';
-    document.getElementById('iframe').style.top = '10vw';
-    document.getElementById('game-content').style.top = '42vw';
-    setInterval(function() {
-        document.getElementById('settings').style.backdropFilter = 'none';
-    }, 10);
-    document.getElementById('settings').style.backdropFilter = 'none';
-    document.getElementById('settings').style.backgroundColor = '#181818fb';
-    document.getElementById('navigation').style.height = '7.5%';
-    document.getElementById('top').style.height = '45vw';
-    document.getElementById('top').style.marginTop = '-4vw';
-    document.getElementById('paragraph').style.top = '25vw';
-    document.getElementById('start-button').style.top = '28vw';
-    console.log("The device accessing is an iPad");
-}
-
 // Custom developer console message.
 window.onload = console.log (' _^_\n |@|         Be Careful Here\n<===>\n #::\n #::\n#███:^-.\n████████^ ~"(_.~"(_.~"(_.~"(_.~"(');
 
@@ -506,64 +263,7 @@ function shuffleArray(array) {
 }
 
 // Fetch and process game list data from './lib/games.json'.
-if (mobile) {
-    fetch('games.json')
-    .then(response => response.json())
-    .then(categories => {
-        let allGames = [];
-        
-        for (let category in categories) {
-            allGames = allGames.concat(categories[category]);
-        }
-
-        let uniqueGames = [];
-        let titles = new Set();
-
-        allGames.forEach(game => {
-            if (!titles.has(game[0])) {
-                titles.add(game[0]);
-                uniqueGames.push(game);
-            }
-        });
-
-        uniqueGames.forEach(game => {
-            const gameElement = document.createElement("div");
-            gameElement.classList.add("game");
-            gameElement.innerHTML = `
-                <img src="${game[2]}" class="img" onclick="play('${game[4] || game[3]}', '${game[3]}', '${game[0]}', '${game[1]}')">
-                <h1>${game[0]}</h1>
-                <button class="install" onclick="play('${game[4] || game[3]}', '${game[3]}', '${game[0]}', '${game[1]}')">Play</button>
-            `;
-            document.getElementById("games").appendChild(gameElement);
-            observeImage(gameElement.querySelector(".img"));
-        });
-
-        setTimeout(() => {
-            document.getElementById('loader').style.display = 'none';
-        }, 100);
-        document.getElementById('games').style.display = 'grid';
-    });
-
-    function observeImage(imgElement) {
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: [0]
-        };
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    imgElement.style = `background-image: url(${imgElement.dataset.src}); background-size: cover; background-position: center;`;
-                    observer.unobserve(imgElement);
-                }
-            });
-        }, options);
-
-        observer.observe(imgElement);
-    }
-} else {
-   fetch('./lib/games.json')
+fetch('./lib/games.json')
     .then(response => response.json())
     .then(games => {
         shuffleArray(games);
@@ -639,87 +339,18 @@ function observeImage(imgElement) {
 }
 
 // Function to start a game.
-function play(game, url, name, description) {
-    gtag('event', 'play', {
-        'event_category': 'game',
-        'event_label': name
-    });
-    
-    clearSearch()
-    if (!mobile) {
-        document.getElementById('game-banner').style.position = 'fixed';
-        document.getElementById('game-banner').style.marginTop = '5vw';
-        document.getElementById('game-banner-right').style.position = 'fixed';
-        document.getElementById('game-banner-right').style.marginTop = '5vw';
-        document.getElementById('game-banner').style.zIndex = '99999';
-        document.getElementById('game-banner-right').style.zIndex = '99999';
-    }
-
-    if (mobile) {
-        if (document.getElementById('game-frame').style.display === 'block') {
-            document.getElementById('game-ad').style.display = 'none';
-            document.getElementById('game-frame').style.display = 'none';
-            document.getElementById('game-content').style.display = 'none';
-            document.getElementById('iframe').src = '';
-            document.body.style.overflowY = 'visible';
-        } else {
-            document.getElementById('game-ad').style.display = 'block';
-            document.getElementById('game-frame').style.display = 'block';
-            document.getElementById('game-content').style.display = 'none';
-            document.getElementById('game-frame').style.height = '98vh';
-            document.getElementById('game-frame').style.marginTop = '2vh';
-            document.getElementById('game-frame').style.overflow = 'hidden';
-            document.getElementById('iframe').style.width = '100vw';
-            document.getElementById('iframe').style.height = '98vh';
-            document.getElementById('iframe').src = url;
-            document.body.style.overflowY = 'hidden';
-        }
-    } else {
-        if (localStorage.getItem('hacks') === '[]' || localStorage.getItem('hacks') === undefined) {
-            /*if (document.getElementById('game-frame').style.display === 'block') {
-                document.getElementById('game-ad').style.display = 'none';
-                document.getElementById('game-frame').style.display = 'none';
-                document.getElementById('iframe').src = '';
-                document.body.style.overflowY = 'visible';
-            } else {*/
-                document.getElementById('game-ad').style.display = 'block';
-                document.getElementById('game-frame').style.display = 'block';
-                document.getElementById('iframe').src = url;
-                document.body.style.overflowY = 'hidden';
-            //}
-        } else {
-            let hacks = JSON.parse(localStorage.getItem('hacks'));
-            game = game.toLowerCase().replace(/[\s-]/g, '');
-
-            /*if (document.getElementById('game-frame').style.display === 'block') {
-                document.getElementById('game-ad').style.display = 'none';
-                document.getElementById('game-frame').style.display = 'none';
-                document.getElementById('iframe').src = '';
-                document.getElementById('game-name').innerHTML = '';
-                document.getElementById('game-desc').innerHTML = '';
-                document.body.style.overflowY = 'visible';
-
-                document.getElementById('hack').style.display = 'none';
-                document.getElementById('hack').onclick = null;
-            } else {*/
-                document.getElementById('game-ad').style.display = 'block';
-                document.getElementById('game-frame').style.display = 'block';
-                document.getElementById('iframe').src = url;
-                document.getElementById('game-name').innerHTML = name;
-                document.getElementById('game-desc').innerHTML = description;
-                document.body.style.overflowY = 'hidden';
-
-                if (hacks.includes(game)) {
-                    document.getElementById('hack').style.display = 'block';
-                    document.getElementById('hack').onclick = gameFunctions[game];
-                } else {
-                    localStorage.setItem('game', game);
-                    document.getElementById('hack').style.display = 'none';
-                    document.getElementById('hack').onclick = null;
-                }
-            //}
-        }
-    }   
+function play(game, url) {
+  localStorage.setItem('game', game);
+  const gameFrame = document.getElementById('game-frame');
+  if (gameFrame.style.display === 'block') {
+    gameFrame.style.display = 'none';
+    document.getElementById('iframe').src = '';
+    document.body.style.overflowY = 'visible';
+  } else {
+    gameFrame.style.display = 'block';
+    document.getElementById('iframe').src = url;
+    document.body.style.overflowY = 'hidden';
+  }
 }
 
 // Function to switch game perspective.
@@ -933,14 +564,13 @@ function cloak(icon, title, id) {
   link.type = 'image/x-icon';
   link.rel = 'shortcut icon';
   link.href = icon;
-  document.title = title;
+  document.title= title;
   document.getElementsByTagName('head')[0].appendChild(link);
   
   localStorage.setItem('icon', icon);
   localStorage.setItem('title', title);
   localStorage.setItem('activeTab', id);
 
-  // Updated selector to match your HTML structure
   document.querySelectorAll('#settings #pages #general .icons div').forEach(div => div.classList.remove('active'));
 }
 
