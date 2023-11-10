@@ -12,6 +12,9 @@
       \_/
 */
 
+// Set mobile pixel width.
+var mobile = window.innerWidth < 850;
+
 // Check if the client is mobile.
 window.onload = function() {
     var isMobileSafari = /iP(ad|od|hone)/i.test(navigator.platform) && /WebKit/i.test(navigator.userAgent) && !(/(CriOS|FxiOS)/i.test(navigator.userAgent));
