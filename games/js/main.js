@@ -27,6 +27,27 @@ window.onload = function() {
     }
 }
 
+// Check screen width for mobile UI change.
+function checkScreenWidth() {
+    var mobile = window.innerWidth < 850;
+
+    if (mobile) {
+        document.getElementById('navigation').classList.add("mobile");
+        document.getElementById('footer').classList.add("mobile");
+        document.getElementById('top').style.display = 'none';
+        document.getElementById('games').classList.add("mobile");
+        document.getElementById('controls').classList.add("mobile");
+        document.getElementById('game-banner').style.display = 'none';
+        document.getElementById('game-banner-right').style.display = 'none';
+    } else {
+        document.getElementById('navigation').classList.remove("mobile");
+        document.getElementById('footer').classList.remove("mobile");
+        document.getElementById('games').classList.remove("mobile");
+        document.getElementById('controls').classList.remove("mobile");
+    }
+}
+
+
 // Adjust UI if mobile.
 if (mobile) {
     function search() {
@@ -159,6 +180,79 @@ if (mobile) {
             });
         }; 
     });
+}
+
+// count unique games to console use later idk
+
+async function countUniqueGames() {
+    const response = await fetch('games.json');
+    const data = await response.json();
+  
+    const uniqueGames = new Set();
+  
+    const addGames = (gamesArray) => {
+      gamesArray.forEach(game => {
+        const gameName = game[0];
+        uniqueGames.add(gameName);
+      });
+    };
+  
+    for (const category in data) {
+      addGames(data[category]);
+    }
+  
+    console.log(`Games: ${uniqueGames.size}`);
+}
+  
+countUniqueGames();
+
+document.getElementById('clickyBox').onclick = function() {
+    closeControls(event)
+}
+
+const clickyBox = document.getElementById('clickyBox');
+const hoverMessage = document.getElementById('hoverMessage');
+
+clickyBox.addEventListener('mousemove', function(e) {
+    hoverMessage.style.display = 'block';
+    hoverMessage.style.left = (e.clientX - 60) + 'px'; 
+    hoverMessage.style.top = (e.clientY - 60) + 'px';
+});
+
+clickyBox.addEventListener('mouseleave', function() {
+    hoverMessage.style.display = 'none';
+});
+
+// ipad crap
+
+function isIpad() {
+    //var tru = 1;
+    //return tru = 1;
+    return /iPad|Macintosh/.test(navigator.userAgent) && 'ontouchend' in document;
+}
+
+if (isIpad()) {
+    document.getElementById('game-banner').style.display = 'none';
+    document.getElementById('game-banner-right').style.display = 'none';
+    document.getElementById('navigation').style.backdropFilter = 'none';
+    document.getElementById('navigation').style.backgroundColor = '#2b2b2bf6';
+    document.getElementById('game-frame').style.backdropFilter = 'none';
+    document.getElementById('game-frame').style.backgroundColor = '#181818fb';
+    document.getElementById('game-frame').style.height = '100vh';
+    document.getElementById('game-frame').style.top = '0';
+    document.getElementById('iframe').style.top = '10vw';
+    document.getElementById('game-content').style.top = '42vw';
+    setInterval(function() {
+        document.getElementById('settings').style.backdropFilter = 'none';
+    }, 10);
+    document.getElementById('settings').style.backdropFilter = 'none';
+    document.getElementById('settings').style.backgroundColor = '#181818fb';
+    document.getElementById('navigation').style.height = '7.5%';
+    document.getElementById('top').style.height = '45vw';
+    document.getElementById('top').style.marginTop = '-4vw';
+    document.getElementById('paragraph').style.top = '25vw';
+    document.getElementById('start-button').style.top = '28vw';
+    console.log("The device accessing is an iPad");
 }
 
 // Custom developer console message.
@@ -412,7 +506,64 @@ function shuffleArray(array) {
 }
 
 // Fetch and process game list data from './lib/games.json'.
-fetch('./lib/games.json')
+if (mobile) {
+    fetch('games.json')
+    .then(response => response.json())
+    .then(categories => {
+        let allGames = [];
+        
+        for (let category in categories) {
+            allGames = allGames.concat(categories[category]);
+        }
+
+        let uniqueGames = [];
+        let titles = new Set();
+
+        allGames.forEach(game => {
+            if (!titles.has(game[0])) {
+                titles.add(game[0]);
+                uniqueGames.push(game);
+            }
+        });
+
+        uniqueGames.forEach(game => {
+            const gameElement = document.createElement("div");
+            gameElement.classList.add("game");
+            gameElement.innerHTML = `
+                <img src="${game[2]}" class="img" onclick="play('${game[4] || game[3]}', '${game[3]}', '${game[0]}', '${game[1]}')">
+                <h1>${game[0]}</h1>
+                <button class="install" onclick="play('${game[4] || game[3]}', '${game[3]}', '${game[0]}', '${game[1]}')">Play</button>
+            `;
+            document.getElementById("games").appendChild(gameElement);
+            observeImage(gameElement.querySelector(".img"));
+        });
+
+        setTimeout(() => {
+            document.getElementById('loader').style.display = 'none';
+        }, 100);
+        document.getElementById('games').style.display = 'grid';
+    });
+
+    function observeImage(imgElement) {
+        const options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: [0]
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    imgElement.style = `background-image: url(${imgElement.dataset.src}); background-size: cover; background-position: center;`;
+                    observer.unobserve(imgElement);
+                }
+            });
+        }, options);
+
+        observer.observe(imgElement);
+    }
+} else {
+   fetch('./lib/games.json')
     .then(response => response.json())
     .then(games => {
         shuffleArray(games);
@@ -488,18 +639,87 @@ function observeImage(imgElement) {
 }
 
 // Function to start a game.
-function play(game, url) {
-  localStorage.setItem('game', game);
-  const gameFrame = document.getElementById('game-frame');
-  if (gameFrame.style.display === 'block') {
-    gameFrame.style.display = 'none';
-    document.getElementById('iframe').src = '';
-    document.body.style.overflowY = 'visible';
-  } else {
-    gameFrame.style.display = 'block';
-    document.getElementById('iframe').src = url;
-    document.body.style.overflowY = 'hidden';
-  }
+function play(game, url, name, description) {
+    gtag('event', 'play', {
+        'event_category': 'game',
+        'event_label': name
+    });
+    
+    clearSearch()
+    if (!mobile) {
+        document.getElementById('game-banner').style.position = 'fixed';
+        document.getElementById('game-banner').style.marginTop = '5vw';
+        document.getElementById('game-banner-right').style.position = 'fixed';
+        document.getElementById('game-banner-right').style.marginTop = '5vw';
+        document.getElementById('game-banner').style.zIndex = '99999';
+        document.getElementById('game-banner-right').style.zIndex = '99999';
+    }
+
+    if (mobile) {
+        if (document.getElementById('game-frame').style.display === 'block') {
+            document.getElementById('game-ad').style.display = 'none';
+            document.getElementById('game-frame').style.display = 'none';
+            document.getElementById('game-content').style.display = 'none';
+            document.getElementById('iframe').src = '';
+            document.body.style.overflowY = 'visible';
+        } else {
+            document.getElementById('game-ad').style.display = 'block';
+            document.getElementById('game-frame').style.display = 'block';
+            document.getElementById('game-content').style.display = 'none';
+            document.getElementById('game-frame').style.height = '98vh';
+            document.getElementById('game-frame').style.marginTop = '2vh';
+            document.getElementById('game-frame').style.overflow = 'hidden';
+            document.getElementById('iframe').style.width = '100vw';
+            document.getElementById('iframe').style.height = '98vh';
+            document.getElementById('iframe').src = url;
+            document.body.style.overflowY = 'hidden';
+        }
+    } else {
+        if (localStorage.getItem('hacks') === '[]' || localStorage.getItem('hacks') === undefined) {
+            /*if (document.getElementById('game-frame').style.display === 'block') {
+                document.getElementById('game-ad').style.display = 'none';
+                document.getElementById('game-frame').style.display = 'none';
+                document.getElementById('iframe').src = '';
+                document.body.style.overflowY = 'visible';
+            } else {*/
+                document.getElementById('game-ad').style.display = 'block';
+                document.getElementById('game-frame').style.display = 'block';
+                document.getElementById('iframe').src = url;
+                document.body.style.overflowY = 'hidden';
+            //}
+        } else {
+            let hacks = JSON.parse(localStorage.getItem('hacks'));
+            game = game.toLowerCase().replace(/[\s-]/g, '');
+
+            /*if (document.getElementById('game-frame').style.display === 'block') {
+                document.getElementById('game-ad').style.display = 'none';
+                document.getElementById('game-frame').style.display = 'none';
+                document.getElementById('iframe').src = '';
+                document.getElementById('game-name').innerHTML = '';
+                document.getElementById('game-desc').innerHTML = '';
+                document.body.style.overflowY = 'visible';
+
+                document.getElementById('hack').style.display = 'none';
+                document.getElementById('hack').onclick = null;
+            } else {*/
+                document.getElementById('game-ad').style.display = 'block';
+                document.getElementById('game-frame').style.display = 'block';
+                document.getElementById('iframe').src = url;
+                document.getElementById('game-name').innerHTML = name;
+                document.getElementById('game-desc').innerHTML = description;
+                document.body.style.overflowY = 'hidden';
+
+                if (hacks.includes(game)) {
+                    document.getElementById('hack').style.display = 'block';
+                    document.getElementById('hack').onclick = gameFunctions[game];
+                } else {
+                    localStorage.setItem('game', game);
+                    document.getElementById('hack').style.display = 'none';
+                    document.getElementById('hack').onclick = null;
+                }
+            //}
+        }
+    }   
 }
 
 // Function to switch game perspective.
