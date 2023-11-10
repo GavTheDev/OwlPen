@@ -933,13 +933,14 @@ function cloak(icon, title, id) {
   link.type = 'image/x-icon';
   link.rel = 'shortcut icon';
   link.href = icon;
-  document.title= title;
+  document.title = title;
   document.getElementsByTagName('head')[0].appendChild(link);
   
   localStorage.setItem('icon', icon);
   localStorage.setItem('title', title);
   localStorage.setItem('activeTab', id);
 
+  // Updated selector to match your HTML structure
   document.querySelectorAll('#settings #pages #general .icons div').forEach(div => div.classList.remove('active'));
 }
 
