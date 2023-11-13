@@ -231,13 +231,6 @@
         "Alexey Pajitnov"
     ],
     [
-        "Chess",
-        "Chess is a two-player strategy board game played on a chessboard.",
-        "https://www.owlpentest.com/games/images/chess.jpg",
-        "https://www.chess.com/",
-        "Erik Allebest"
-    ],
-    [
         "2048",
         "A single-player sliding block puzzle game.",
         "https://www.owlpentest.com/games/images/2048.png",
@@ -291,7 +284,7 @@
         "A 3D city builder.",
         "https://www.owlpentest.com/games/images/3dcity.png",
         "https://www.owlpentest.com/games/game/3dcity/index.html",
-        "lo-th"
+        "Lo-th"
     ],
     [
         "Townscraper",
@@ -299,5 +292,12 @@
         "https://www.owlpentest.com/games/images/townscraper.png",
         "https://sf.owlpentest.com/route.html?url=https://oskarstalberg.com/Townscaper/",
         "Oskar Stålberg"
+    ],
+    [
+        "Town of Salem",
+        "A multiplayer game full of strategy and deduction.",
+        "https://www.owlpentest.com/games/images/townofsalem.png",
+        "https://sf.owlpentest.com/route.html?url=https://www.blankmediagames.com/TownOfSalem/",
+        "Blank Media Games"
     ]
 ]
